@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utkarsh | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    
+    :root {
+      --bg-color: #0d0d0d;
+      --text-color: #f1f1f1;
+      --header-bg: #000000; 
+      --header-text: #f1f1f1;
+      --highlight: #f9d342; 
+      --card-bg: #1a1a1a;
+      --card-border: #333;
+      --skills-bg: #222;
+      --hero-bg: #000000; 
+       --skills-text-color: var(--highlight);
+    }
+
+    body.light-theme {
+      --bg-color: #f5f5f5;
+      --text-color: #121212;
+      --header-bg: #ffffff;
+      --header-text: #121212;
+      --highlight: #f9d342;
+      --card-bg: #fff;
+      --card-border: #ccc;
+      --skills-bg:var(--highlight);
+      --hero-bg: #edd74cec; 
+      --skills-text-light: #000;
+      --skills-text-color: #000;
+     
+    }
+
+    
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background: var(--bg-color); 
+      color: var(--text-color); 
+      transition: all 0.3s ease;
+      
+      padding-top: 80px; 
+    }
+
+    
+    header {
+      position: fixed; top:0; left:0; width:100%;
+      background: var(--header-bg); 
+      color: var(--header-text);
+      padding: 15px 50px; 
+      display: flex;
+      justify-content: space-between; 
+      align-items: center;
+      z-index: 1000; 
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      border-bottom: 4px solid var(--highlight);
+    }
+    header h1 { 
+      font-size: 1.5rem; 
+      color: var(--highlight); 
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    nav {
+      display: flex;
+      align-items: center; 
+    }
+
+    /* Nav links styled as pill-shaped buttons */
+    nav a {
+      color: var(--header-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      border: 2px solid var(--header-text); 
+      padding: 8px 18px; 
+      border-radius: 25px; 
+      margin: 0 8px; 
+      display: inline-block; 
+      min-width: 90px; 
+      text-align: center; 
+    }
+
+    nav a:hover {
+      color: var(--highlight);
+      border-color: var(--highlight);
+      background: rgba(249, 211, 66, 0.1); 
+    }
+    
+ 
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px; 
+      height: 25px; 
+      margin-left: 15px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--text-color); 
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 21px; 
+      width: 21px; 
+      left: 2px;
+      bottom: 2px;
+      background-color: var(--highlight); 
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: var(--text-color); 
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px var(--highlight);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(25px); 
+    }
+
+    
+    .slider.round {
+      border-radius: 25px;
+      border: 1px solid var(--highlight); 
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+    
+    /* Light Theme Adjustments for Toggle */
+    body.light-theme .switch input:checked + .slider {
+      background-color: var(--header-text); 
+    }
+    
+    
+    
+    
+    .hero-main {
+      min-height: 87vh;
+      display: flex;
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center;
+      text-align: center;
+      background-color: var(--hero-bg);
+      position: relative;
+      overflow: hidden; 
+    }
+    
+    .hero-title {
+      font-size: 15.5vw; 
+      line-height: 1;
+      font-weight: 900;
+      color: var(--text-color); 
+      z-index: 10;
+      position: relative;
+      letter-spacing: -0.5vw;
+      text-shadow: -1px -1px 0px rgba(155,255,255,0.15),
+      1px 1px 0px rgba(0,0,0,0.8),
+      8px 5px 15px rgba(8, 1, 1, 0.7);
+      margin-top: -13vh;
+    }
+
+    .hero-name-presentation {
+        font-size: 1.0rem;
+        color: var(--text-color);
+        position: absolute;
+        bottom: 2%; 
+        right: 21px;
+        z-index: 10;
+        text-shadow: -2px -2px -1px rgb(208, 208, 200)
+        2px 2px 0px rgb(238, 237, 224)
+        20px 10px 9px rgb(232, 231, 221);
+      font-family: serif;
+    }
+
+    /* Container for the profile image in the hero */
+    .hero-image-container {
+      position: absolute;
+      bottom: 0;
+      right: 32%;
+      transform: none; 
+      width: 250px; 
+      height: auto;
+      z-index: 5;
+    }
+
+    .hero-profile-pic {
+        width: 325px;
+        height: 305px;
+        display: block;
+        
+    }
+    
+    
+    .hero-intro-section {
+      padding: 40px; 
+      text-align: center;
+      background: var(--bg-color); 
+    }
+    .hero-intro-section h1 { font-size:3rem; margin-bottom:20px; color:var(--highlight); }
+    .hero-intro-section p { font-size:1.2rem; margin-bottom:30px; color:var(--text-color); }
+    .hero-intro-section button {
+      padding:12px 25px; border:none; border-radius:25px;
+      background: var(--highlight); color: #000; font-size:1rem; cursor:pointer; transition:0.3s;
+    }
+    .hero-intro-section button:hover { opacity:0.8; }
+    
+    
+    section { padding:80px 50px; text-align:center; }
+    section h2 { font-size:2rem; margin-bottom:20px; color:var(--highlight); }
+    section h2::after {
+      content:""; display:block; width:60px; height:3px; background:var(--highlight);
+      margin:10px auto;
+    }
+
+    /* About, Education, Projects, Contact, Footer */
+    #about p { max-width:700px; margin:20px auto; font-size:1.1rem; line-height:1.6; }
+    .skills { margin-top:20px; }
+    .skills span {
+      display:inline-block; background: var(--skills-bg); padding:8px 15px; margin:5px;
+      border-radius:5px; color:var(--skills-text-color); font-size:0.95rem;
+    }
+    body.light-theme .skills span{
+      color: var(--skills-text-light)
+    }
+    .edu { max-width:700px; margin:20px auto; text-align:left; }
+    .edu-item { background: var(--card-bg); padding:15px; border-radius:8px; margin:10px 0; border-left:4px solid var(--highlight); }
+    .projects { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+    .card {
+      background: var(--card-bg); padding:20px; border-radius:10px;
+      width:280px; box-shadow:0 5px 15px rgba(0,0,0,0.6);
+      border:1px solid var(--card-border); transition:0.3s;
+    }
+    .card:hover { transform:translateY(-5px); border-color:var(--highlight); }
+    .card h3 { margin-bottom:10px; color:var(--highlight); }
+    .card p { font-size:0.95rem; color:#ccc; }
+    .card a { display:inline-block; margin-top:10px; text-decoration:none; color:var(--highlight); font-weight:bold; }
+    #contact p { margin:10px 0; font-size:1.1rem; }
+    #contact a { color:var(--highlight); text-decoration:none; }
+    footer { background: var(--header-bg); color: var(--text-color); text-align:center; padding:20px; border-top:2px solid var(--highlight); }
+
+    /* Basic Mobile Responsiveness */
+    @media (max-width: 768px) {
+        header { padding: 10px 20px; flex-direction: column; }
+        nav { margin-top: 10px; flex-wrap: wrap; justify-content: center; }
+        nav a { margin: 5px; }
+        .hero-title { font-size: 20vw; letter-spacing: -1vw; }
+        .hero-name-presentation { right: 20px; font-size: 0.9rem; }
+        .hero-image-container { width: 80%; }
+        section { padding: 40px 20px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>UTKARSH SRIVASTAVA</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      
+      <label class="switch">
+        <input type="checkbox" id="theme-toggle-checkbox">
+        <span class="slider round"></span>
+      </label>
+    </nav>
+  </header>
+
+  <section class="hero-main">
+    <h1 class="hero-title">PORTFOLIO</h1>
+    <p class="hero-name-presentation"><em>Presented By: Utkarsh Srivastava</em></p>
+    
+    <div class="hero-image-container">
+      <img src="photo.png" alt="Utkarsh Srivastava Profile Picture" class="hero-profile-pic" >
+    </div>
+  </section>
+  
+  <section class="hero-intro-section">
+    <h1>Hello, I'm Utkarsh Srivastava</h1>
+    <p>B.Tech Student | Aspiring Software Developer</p>
+    <button onclick="window.open('CV-UTKARSH.pdf')">Download Resume</button>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hi! I'm a Third year B.Tech student at Kalinga Institue of Industrial Technology (KIIT-DU), Bhubaneswar, and I’m passionate about technology and coding. I love exploring new programming languages and keeping up with the latest tech trends. I’m naturally curious and enjoy tackling problems in creative ways. I’m always learning and growing, and I hope to use my skills to create something meaningful and make a positive impact in the tech world.</p>
+    <div class="skills">
+      <span>HTML</span> <span>CSS</span> <span>JavaScript</span>
+      <span>C</span> <span>Java</span> <span>Python</span>
+      <span>AI-ML</span> <span>Android Development</span> <span>Ethical Hacking</span> <span>Data Science (Python)</span>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu">
+      <div class="edu-item">
+        <h3>B.Tech in Computer Science</h3>
+        <p>KIIT-DU | 2023 - 2027</p>
+      </div>
+      <div class="edu-item">
+        <h3>Senior Secondary (12th)</h3>
+        <p>Netajee Defence Academy | Completed 2022</p>
+      </div>
+      <div class="edu-item">
+        <h3> Secondary (10th)</h3>
+        <p>The Pillars Public School | Completed 2020</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Portfolio Website</h3>
+        <p>This responsive portfolio you are viewing now.</p>
+        <a href="#">GitHub →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:srivastavautkarsh2004@gmail.com">srivastavautkarsh2004@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/Utkarsh-198" target="_blank">github.com/Utkarsh-198</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/utkarsh-srivastava-486736340" target="_blank">linkedin.com/in/utkarsh-srivastava-486736340</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Utkarsh | Portfolio</p>
+  </footer>
+
+  <script>
+    const toggleCheckbox = document.getElementById('theme-toggle-checkbox');
+    const body = document.body;
+
+    // Load saved theme
+    if(localStorage.getItem('theme') === 'light') {
+      body.classList.add('light-theme');
+      toggleCheckbox.checked = true; 
+    }
+
+    toggleCheckbox.addEventListener('change', () => {
+      body.classList.toggle('light-theme');
+
+      if(body.classList.contains('light-theme')){
+        localStorage.setItem('theme','light');
+      } else {
+        localStorage.setItem('theme','dark');
+      }
+    });
+  </script>
+
+</body>
+</html>
